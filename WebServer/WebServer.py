@@ -7,12 +7,12 @@ def home_page():
 
 @app.route("/Login", methods=["POST"])
 def login_page():
-    if requests.method == "POST":
+    if request.method == "POST":
 	login_data = request.form
 	# if(verify_user(login_data))
-	if login_data['userType'] == '0':
+	if login_data['userType'] == '1':
 		return redirect(url_for('administrator_page'))
-        if login_data['userType'] == '1':
+        if login_data['userType'] == '0':
 		return redirect(url_for('user_page'))
 	return "Please enter the type of the user"
 
