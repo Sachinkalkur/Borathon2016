@@ -1,4 +1,5 @@
 from flask import Flask, redirect, request, url_for, render_template, Response
+import urllib2
 
 app = Flask(__name__)
 
@@ -28,6 +29,15 @@ def administrator_page():
 @app.route("/User", methods=["GET", "POST"])
 def user_page():
     return "hello User"
+
+
+@app.route("/Demo", methods=["GET"])
+def demo_page():
+    try:
+        response = urllib2.urlopen('http://10.172.31.28.150/')
+        return response.read()
+    except urllib2.HTTPError, e:
+        return e.fp.read()
 
 
 if __name__ == "__main__":
