@@ -33,4 +33,4 @@ def user_page():
 if __name__ == "__main__":
     app.debug = True
     app.Thread = True
-    app.run('172.31.28.150', 8080)
+    app.run('172.31.28.150', 80)
