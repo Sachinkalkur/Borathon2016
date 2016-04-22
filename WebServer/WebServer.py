@@ -1,5 +1,6 @@
 from flask import Flask, redirect, request, url_for, render_template, Response
 import urllib2
+import random
 
 app = Flask(__name__)
 
@@ -35,6 +36,7 @@ def user_page():
 def demo_page():
     try:
         response = urllib2.urlopen('http://10.172.31.28.150/')
+		my_number = random.randint(1,5)
         return response.read()
     except urllib2.HTTPError, e:
         return e.fp.read()
@@ -43,4 +45,4 @@ def demo_page():
 if __name__ == "__main__":
     app.debug = True
     app.Thread = True
-    app.run('172.31.28.150', 80)
+    app.run('10.128.0.5', 80)
